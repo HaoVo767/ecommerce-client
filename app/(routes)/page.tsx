@@ -6,7 +6,7 @@ import ProductList from "@/components/products-list"
 import { IProduct } from "@/type"
 
 const HomePage = async () => {
-  const billboardData = await getBillboard("22043ad0-7f9c-429a-9b41-8cd7a03cd10c")
+  const billboardData = await getBillboard("a9f9042a-972a-4a2b-8b4d-7a302381b904")
   const query = {
     isFeatured: true,
   }
@@ -14,7 +14,7 @@ const HomePage = async () => {
   return (
     <Container>
       <BillBoard data={billboardData} />
-      <div className="flex flex-col gap-y-8 px-4">
+      <div className="flex flex-col gap-y-8 mt-6 px-4">
         <ProductList
           title={"Featured product"}
           items={products}

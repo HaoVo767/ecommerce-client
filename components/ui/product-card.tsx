@@ -72,7 +72,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
           </div>
         </div>
       </div>
-      <div className="font-semibold text-md">{data?.name}</div>
+      <div className="font-semibold text-md h-16 overflow-hidden">{data?.name}</div>
       <div className="text-gray-500 text-sm">{data?.category?.name}</div>
       <FormatCurrency
         className="mt-4"

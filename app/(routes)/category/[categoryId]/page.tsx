@@ -10,15 +10,6 @@ import ProductCard from "@/components/ui/product-card"
 import { IProduct } from "@/type"
 import MobileFiters from "./components/mobile-fiter"
 
-// interface CategoryPageProps {
-//   params: {
-//     categoryId: string
-//   }
-//   searchParams: {
-//     color: string
-//     size: string
-//   }
-// }
 type SearchParams = Promise<{
   [key: string]: string | undefined
 }>
@@ -55,11 +46,13 @@ async function CategoryPage({
           colors={colors}
         />
         <div className="hidden lg:block">
-          <Filter
-            valueKey="size"
-            name="Sizes"
-            data={sizes}
-          />
+          {categoryId !== "7622b9d9-39b5-4e8e-89b4-dc8c99ee41ee" && (
+            <Filter
+              valueKey="size"
+              name="Sizes"
+              data={sizes}
+            />
+          )}
 
           <Filter
             valueKey="color"

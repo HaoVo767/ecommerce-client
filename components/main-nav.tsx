@@ -22,12 +22,15 @@ const MainNav: React.FC<MainNavProps> = ({ data }) => {
     active: pathName.includes(`/category/${route.id}`),
   }))
   return (
-    <div className="ml-8 flex gap-x-2">
+    <div className="ml-8 flex gap-x-4">
       {routes.map((route) => (
         <Link
           key={route.href}
           href={route.href}
-          className={cn("hover:text-black w-max", route.active ? "text-black" : "text-gray-500")}
+          className={cn(
+            "hover:text-black w-max",
+            route.active ? "text-black border-b border-gray-500" : "text-gray-500"
+          )}
         >
           {route.label}
         </Link>

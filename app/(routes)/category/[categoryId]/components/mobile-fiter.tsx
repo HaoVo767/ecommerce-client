@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import { Dialog, DialogPanel } from "@headlessui/react"
 import IconButton from "@/components/ui/icon-button"
 import Filter from "./filter"
+import { useParams } from "next/navigation"
 
 interface MobileFitersProps {
   sizes: ISize[]
@@ -17,6 +18,7 @@ const MobileFiters: React.FC<MobileFitersProps> = ({ ...props }) => {
   const { sizes, colors } = props
   const [isOpen, setIsOpen] = useState<boolean>(false)
   const [isMounted, setIsMounted] = useState<boolean>(false)
+  const params = useParams()
   useEffect(() => {
     setIsMounted(true)
   }, [])
@@ -56,11 +58,13 @@ const MobileFiters: React.FC<MobileFitersProps> = ({ ...props }) => {
               />
             </div>
             <div className="pt-6 px-4">
-              <Filter
-                valueKey="size"
-                name="Sizes"
-                data={sizes}
-              />
+              {params?.categoryId !== "7622b9d9-39b5-4e8e-89b4-dc8c99ee41ee" && (
+                <Filter
+                  valueKey="size"
+                  name="Sizes"
+                  data={sizes}
+                />
+              )}
 
               <Filter
                 valueKey="color"

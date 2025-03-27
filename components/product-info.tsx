@@ -21,7 +21,7 @@ const ProductInfo: React.FC<ProductProps> = ({ ...props }) => {
 
   return (
     <div className="text-gray-700">
-      <div className="text-3xl font-semibold">{data?.name}</div>
+      <div className="text-3xl font-semibold mt-4">{data?.name}</div>
       <div className="flex flex-start mt-2 border-b-1 border-gray-300 pb-4">
         <FormatCurrency value={+data?.price} />
       </div>
@@ -34,9 +34,10 @@ const ProductInfo: React.FC<ProductProps> = ({ ...props }) => {
         <div className="flex gap-x-2 items-center">
           <h3 className="font-semibold">Color:</h3>
           <div
-            className="h-4 w-4 rounded-full mt-[2px]"
+            className="h-4 w-4 rounded-full mt-[2px] border border-gray-500"
             style={{ backgroundColor: data?.color?.value }}
           ></div>
+          <div>{data.color.name}</div>
         </div>
         <div className="mt-6">
           <Button
