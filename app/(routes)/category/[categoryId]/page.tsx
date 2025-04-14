@@ -40,12 +40,12 @@ async function CategoryPage({
   return (
     <Container>
       <BillBoard data={billboard} />
-      <div className="mt-6 lg:grid lg:grid-cols-5 lg:gap-x-8">
+      <div className="mt-6 lg:grid lg:grid-cols-5">
         <MobileFiters
           sizes={sizes}
           colors={colors}
         />
-        <div className="hidden lg:block">
+        <div className="hidden lg:block lg:col-span-1 justify-self-end">
           {categoryId !== "7622b9d9-39b5-4e8e-89b4-dc8c99ee41ee" && (
             <Filter
               valueKey="size"
@@ -62,7 +62,7 @@ async function CategoryPage({
         </div>
         <div className="lg:col-span-4">
           {products?.length === 0 && <NoResults />}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-2 lg:gap-x-4">
+          <div className="grid grid-cols-1 items-center place-self-center justify-center sm:grid-cols-2 md:grid-cols-3  2xl:grid-cols-5 lg:gap-x-4 gap-y-6">
             {products?.map((product: IProduct) => (
               <ProductCard
                 key={product.id}

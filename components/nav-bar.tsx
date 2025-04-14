@@ -7,7 +7,7 @@ const Navbar = async () => {
   const data = await getCategorys()
   return (
     <Container>
-      <div className="h-16 flex items-center gap-x-2 w-full">
+      <div className="h-[76px] flex items-center gap-x-2 w-full">
         <Link
           href="/"
           className="text-2xl font-bold"

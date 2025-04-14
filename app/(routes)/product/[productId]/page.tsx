@@ -17,7 +17,7 @@ async function ProductPage({ params }: { params: Promise<{ productId: string }> 
   const suggestedProducts = await getProduct({ category: product?.category?.id })
   return (
     <Container>
-      <div className="w-full lg:w-2/3 mx-auto px-4 mt-4 pt-10 sm:px-6 lg:px-8 border-t-1 border-gray-300">
+      <div className="w-full lg:w-9/10 xl:w-2/3 mx-auto px-4 mt-4 pt-10 sm:px-6 lg:px-8 border-t-1 border-gray-300">
         <div className="lg:grid lg:grid-cols-2 lg:item-start lg:gap-x-8">
           <Gallery images={product.image} />
           <ProductInfo data={product} />

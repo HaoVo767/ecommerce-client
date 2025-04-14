@@ -8,7 +8,17 @@ body,
 :root {
   height: 100%;
 }
+@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+  img[loading="lazy"] {
+    clip-path: inset(0.6px);
+  }
+} /* Closing @supports block */
 
+/* @layer utilities {
+  .transition-transform {
+    transition: transform 30s ease-in-out;
+  }
+} */
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
