@@ -1,5 +1,5 @@
 import Container from "@/components/ui/container"
-import { getBillboard } from "@/actions/getBillboaed"
+// import { getBillboard } from "@/actions/getBillboaed"
 import BillBoard from "@/components/billboard"
 import { getProduct } from "@/actions/getProduct"
 import ProductList from "@/components/products-list"
@@ -7,14 +7,14 @@ import { IProduct } from "@/type"
 import { Carousel } from "@/components/galleryFeatureProduct"
 
 const HomePage = async () => {
-  const billboardData = await getBillboard("a9f9042a-972a-4a2b-8b4d-7a302381b904")
+  // const billboardData = await getBillboard("a9f9042a-972a-4a2b-8b4d-7a302381b904")
   const query = {
     isFeatured: true,
   }
   const products: IProduct[] = await getProduct(query)
   return (
     <Container>
-      <BillBoard data={billboardData} />
+      <BillBoard />
       <div className="max-h-[550px] mt-10 w-full lg:w-3/4 mx-auto">
         <Carousel />
       </div>

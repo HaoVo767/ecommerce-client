@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
+import { Menu } from "lucide-react"
 import { ICategory } from "@/type"
 
 interface MainNavProps {
@@ -22,20 +23,25 @@ const MainNav: React.FC<MainNavProps> = ({ data }) => {
     active: pathName.includes(`/category/${route.id}`),
   }))
   return (
-    <div className="ml-8 flex gap-x-4">
-      {routes.map((route) => (
-        <Link
-          key={route.href}
-          href={route.href}
-          className={cn(
-            "hover:text-black w-max",
-            route.active ? "text-black border-b border-gray-500" : "text-gray-500"
-          )}
-        >
-          {route.label}
-        </Link>
-      ))}
-    </div>
+    <>
+      <div className="ml-8 hidden md:flex gap-x-4  ">
+        {routes.map((route) => (
+          <Link
+            key={route.href}
+            href={route.href}
+            className={cn(
+              "hover:text-black w-max",
+              route.active ? "text-black border-b border-gray-500" : "text-gray-500"
+            )}
+          >
+            {route.label}
+          </Link>
+        ))}
+      </div>
+      <div className="bolck md:hidden">
+        <Menu className="w-6 h-6 relative top-[2px]" />
+      </div>
+    </>
   )
 }
 

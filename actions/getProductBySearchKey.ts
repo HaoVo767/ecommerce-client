@@ -1,16 +1,12 @@
 import qs from "query-string"
 
 interface Query {
-  category?: string
-  size?: string | undefined
-  color?: string | undefined
-  isFeatured?: boolean
-  searchKey?: string | undefined
+  keyword: string
 }
 
-export const getProduct = async (query: Query) => {
+export const getProductBySearchKey = async (query: Query) => {
   try {
-    const URL = `${process.env.NEXT_PUBLIC_API_URL}/product/findByQuery`
+    const URL = `${process.env.NEXT_PUBLIC_API_URL}/product/findBySearchKeyword`
     const queryURL = qs.stringifyUrl({ url: URL, query: { ...query } })
     const response = await fetch(queryURL, {
       method: "GET",

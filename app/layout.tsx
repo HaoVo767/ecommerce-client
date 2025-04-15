@@ -27,7 +27,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col min-h-screen`}>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} custom-scrollbar antialiased flex flex-col min-h-screen background bg-blend-overlay`}
+      >
         <div className="grow">
           <ToastProvider />
           <ModalProvider />

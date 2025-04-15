@@ -1,10 +1,9 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 import { formatCurrency } from "@/lib/formatCurency"
 import clsx from "clsx"
 import Image from "next/image"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 export interface IFeaturedImages {
   name: string
@@ -30,26 +29,37 @@ export function CarouselFeaturedProduct({
   }
 }) {
   const [isMounted, setIsMounted] = useState<boolean>(false)
-  const [currentIndex, setCurrentIndex] = useState(0)
+
   useEffect(() => {
     setIsMounted(true)
   }, [])
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => prevIndex + 1)
-    }, 4000)
 
-    return () => clearInterval(timer) // Clear interval on component unmount
-  }, [featuredImages])
+  const ulRef = useRef<HTMLUListElement>(null)
   useEffect(() => {
-    if (currentIndex >= featuredImages.length) {
-      setCurrentIndex(0)
-    }
-  }, [currentIndex])
+    setTimeout(() => {
+      if (ulRef.current) {
+        ulRef.current.style.transform = `translateX(-${ulRef.current.scrollWidth}px)`
+        ulRef.current.style.transition = `transform ${featuredImages.length * 10}s linear`
+      }
+    }, 100)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  useEffect(() => {
+    setTimeout(() => {
+      if (ulRef.current) {
+        ulRef.current.style.transform = `translateX(0px)`
+        ulRef.current.style.transition = `transform ${featuredImages.length * 10}s linear`
+      }
+    }, featuredImages.length * 8000)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
   if (!isMounted) return null
 
   return (
-    <ul className="flex animate-carousel gap-4">
+    <ul
+      className="flex animate-carousel gap-4 custom-scrollbar"
+      ref={ulRef}
+    >
       {featuredImages.map((featuredImage, i) => (
         <li
           key={`${featuredImage.productId}${i}`}
@@ -61,7 +71,7 @@ export function CarouselFeaturedProduct({
           >
             <div
               className={clsx(
-                "group flex h-full w-full items-center justify-center overflow-hidden rounded-lg border bg-white hover:border-blue-600 dark:bg-black relative transition-transform ease-[cubic-bezier(0.25, 1, 0.5, 1)] hover:scale-101",
+                "group flex h-full w-full items-center justify-center overflow-hidden rounded-lg border bg-white hover:border-blue-600 dark:bg-black relative transition-transform ease-[cubic-bezier(0.25, 1, 0.5, 1)]",
                 {
                   relative: label,
                   "border-2 border-blue-600": active,
@@ -69,8 +79,8 @@ export function CarouselFeaturedProduct({
                 }
               )}
               style={{
-                transform: `translateX(-${currentIndex * 480}px)`,
-                transition: "transform 4s ease-in-out",
+                transform: `translateX(-${ulRef.current?.scrollWidth}px)`,
+                transition: `transform ${featuredImages.length * 5}s ease-in-out`,
               }}
             >
               {featuredImage.url ? (
