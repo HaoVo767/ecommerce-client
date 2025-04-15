@@ -4,10 +4,13 @@ import NoResults from "@/components/ui/no-result"
 import ProductCard from "@/components/ui/product-card"
 import { IProduct } from "@/type"
 
-export default async function SearchPage({ searchParams }: { searchParams: { keyword: string } }) {
-  const { keyword } = await searchParams
+type SearchParams = Promise<{
+  [key: string]: string
+}>
+export default async function SearchPage({ searchParams }: { searchParams: SearchParams }) {
+  const search = await searchParams
   const query = {
-    keyword,
+    keyword: search.keyword,
   }
   const products = await getProductBySearchKey(query)
   return (

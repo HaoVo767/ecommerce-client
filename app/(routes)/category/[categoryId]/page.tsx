@@ -33,13 +33,13 @@ async function CategoryPage({
   const sizes = await getSizes()
   const colors = await getColors()
   const category = await getCategory(categoryId)
-  const { billboard } = category
+  // const { billboard } = category
 
   if (JSON.stringify(category) === "{}") return null
   if (!category?.billboard) return null
   return (
     <Container>
-      <BillBoard data={billboard} />
+      <BillBoard />
       <div className="mt-6 lg:grid lg:grid-cols-5">
         <MobileFiters
           sizes={sizes}
