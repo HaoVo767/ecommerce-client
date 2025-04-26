@@ -16,6 +16,7 @@ export interface IProduct {
   name: string
   price: string
   isFeatured: boolean
+  thumnailUrl: string
   size: ISize
   color: IColor
   image: IImage[]

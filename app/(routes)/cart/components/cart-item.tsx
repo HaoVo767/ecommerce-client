@@ -27,7 +27,7 @@ const CartItem: React.FC<CartItemProp> = ({ ...props }) => {
         <Image
           priority
           fill
-          src={data.image[0]?.url}
+          src={data?.thumnailUrl}
           alt="cart product image"
           className="object-cover object-center"
           sizes="100"

@@ -15,7 +15,7 @@ const GalleryTab: React.FC<GalleryTabProps> = ({ ...props }) => {
         <div>
           <span className="absolute h-full w-full aspect-square inset-0 rounded-md overflow-hidden">
             <Image
-              src={image?.url}
+              src={image?.url.replace("upload", "upload/w_400,h_400,c_fit/")}
               alt="image-gallery"
               fill
               sizes="100%"

@@ -9,7 +9,7 @@ export interface IFeaturedImages {
   name: string
   productId: string
   price: string
-  id: string
+  // id: string
   url: string
 }
 export function CarouselFeaturedProduct({

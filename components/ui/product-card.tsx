@@ -42,7 +42,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ data }) => {
     >
       <div className="aspect-square rounded-xl bg-gray-100 relative">
         <Image
-          src={data?.image[0]?.url}
+          src={data?.thumnailUrl}
           alt={data?.name}
           fill
           priority

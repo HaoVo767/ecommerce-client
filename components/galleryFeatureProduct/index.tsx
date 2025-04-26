@@ -12,7 +12,7 @@ export async function Carousel() {
 
   const featuredImages = products.map((product) => {
     return {
-      ...product.image[0],
+      url: product?.thumnailUrl,
       name: product.name,
       productId: product.id,
       price: product.price,
