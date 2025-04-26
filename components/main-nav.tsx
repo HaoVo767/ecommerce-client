@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
 import { Menu } from "lucide-react"
 import { ICategory } from "@/type"
+import { DropdownMenu, DropdownMenuTrigger, DropdownMenuItem, DropdownMenuContent } from "@/components/ui/dropdown-menu"
 
 interface MainNavProps {
   data: ICategory[]
@@ -39,7 +40,25 @@ const MainNav: React.FC<MainNavProps> = ({ data }) => {
         ))}
       </div>
       <div className="bolck md:hidden">
-        <Menu className="w-6 h-6 relative top-[2px]" />
+        <DropdownMenu>
+          <DropdownMenuTrigger>
+            <Menu className="w-6 h-6 relative top-[5px]" />
+          </DropdownMenuTrigger>
+          <DropdownMenuContent>
+            {routes.map((route) => (
+              <Link
+                key={route.href}
+                href={route.href}
+                className={cn(
+                  "hover:text-black w-max",
+                  route.active ? "text-black border-b border-gray-500" : "text-gray-500"
+                )}
+              >
+                <DropdownMenuItem>{route.label}</DropdownMenuItem>
+              </Link>
+            ))}
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </>
   )

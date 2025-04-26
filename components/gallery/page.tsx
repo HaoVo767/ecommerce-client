@@ -37,7 +37,7 @@ const Gallery: React.FC<GalleryProps> = ({ ...props }) => {
       <TabPanels className="aspect-auto">
         {images?.map((image) => (
           <TabPanel key={image.id}>
-            <div className="aspect-square relative h-[500px] w-[400px] sm:rounded-lg overflow-hidden">
+            <div className="aspect-square relative h-[400px] sm:h-[500px] w-[300px] sm:w-[400px] sm:rounded-lg overflow-hidden">
               <Image
                 src={image?.url}
                 alt="image"
