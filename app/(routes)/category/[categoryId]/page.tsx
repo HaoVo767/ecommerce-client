@@ -9,7 +9,6 @@ import NoResults from "@/components/ui/no-result"
 import ProductCard from "@/components/ui/product-card"
 import { IProduct } from "@/type"
 import MobileFiters from "./components/mobile-fiter"
-
 type SearchParams = Promise<{
   [key: string]: string | undefined
 }>
@@ -40,6 +39,7 @@ async function CategoryPage({
   return (
     <Container>
       <BillBoard />
+
       <div className="mt-6 lg:grid lg:grid-cols-5">
         <MobileFiters
           sizes={sizes}
